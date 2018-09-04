@@ -6,7 +6,7 @@
 const consts = {
 
     //api: getRelativeAPI(window.location.host, 3000, "/api"),
-    api: "http://localhost:8000/api",
+    api: "http://127.0.0.1:8000/api",
     // api: "https://d3.ltw-global.com/api",
     
     // issues: PropTypes.shape({
