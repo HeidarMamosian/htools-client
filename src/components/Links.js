@@ -13,6 +13,11 @@ const isURL = (str) => {
 
 async function checkUrl(url) {
     let fetch_url = consts.api + "/" + encodeURIComponent(url);
+    console.log('------------------------')
+    console.log(consts.api)
+    console.log(fetch_url)
+    console.log('------------------------')
+
     const response = await fetch(fetch_url, { method: "GET" });
     const json = await response.json();
     return json.status;

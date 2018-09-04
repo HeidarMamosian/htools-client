@@ -1,12 +1,20 @@
-// function getRelativeAPI(host, port, path, https) {
-//     const httpStart = https == null ? "//" : (https ? "https://" : "http://");
-//     return `${httpStart}${host}${port ? `:${port}` : ""}${path || ""}`;
-// }
+// eslint-disable-next-line no-unused-vars
+function getRelativeAPI(host, port, path, https) {
+    console.log(host)
+    console.log(port)
+    console.log(path)
+    console.log(https)
+    
+    const hostWithoutPort = host.replace(/:\d{1,6}\/?$/, "");
+    const httpStart = https == null ? "//" : https+ "//";
+    // const httpStart = https == null ? "//" : (https ? "https://" : "http://");
+    return `${httpStart}${hostWithoutPort}${port ? `:${port}` : ""}${path || ""}`;
+}
 
 const consts = {
 
-    //api: getRelativeAPI(window.location.host, 3000, "/api"),
-    api: "http://127.0.0.1:8000/api",
+    api: getRelativeAPI(window.location.host, 8000, "/api",window.location.protocol),
+    //api: "http://127.0.0.1:8000/api",
     // api: "https://d3.ltw-global.com/api",
     
     // issues: PropTypes.shape({
