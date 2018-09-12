@@ -102,7 +102,7 @@ class WebScraper extends Component {
     super(props);
 
     this.state = {
-      scrapeMethod: "html2text",
+      scrapeMethod: "goose",
       MinWords: 50,
       DigLevel: 0,
       CheckUrls_enable: false,
