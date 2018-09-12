@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
+import fetch from "isomorphic-fetch";
 import uuid from 'uuid';
 import JSZip from 'jszip';
 import { saveAs } from 'file-saver';
-import fetch from "isomorphic-fetch";
 import Header from './Header';
+import ScrapeSettings from './ScrapeSettings';
 import Links from './Links';
 import PagesList from './PagesList';
 import consts from "../consts";
@@ -81,6 +82,8 @@ function extractRootDomain(url) {
     return domain.split('#')[0];
 }
 // End of Utilities Functions
+
+
 class WebScrape extends Component {
     state = {
         showStart: false,
@@ -184,6 +187,8 @@ class WebScrape extends Component {
         return (
             <div className='container'>
                 <Header />
+                <ScrapeSettings min_value={50} />
+                
                 <Links changelinksresult={this.changelinksresult} />
                 <br />
                 {this.state.Onprocess && <p className="text-warning">Process is started ...<span>{this.state.pages.length}</span></p>}

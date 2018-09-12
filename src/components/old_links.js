@@ -20,24 +20,23 @@ async function checkUrl(url) {
 
 class Links extends Component {
     state = {
-        OKpages: [],
-        NotOkpages: []
+        OKpages:[],
+        NotOkpages:[]
     };
 
-    checkUrlSyntax = (arrayOfUrls) => {
-        for (let i = 0; i < arrayOfUrls.length; i++) {
-            if (!isURL(arrayOfUrls[i].trim())) {
-                console.log(arrayOfUrls[i]);
-                const txturls = document.getElementById("urls");
-                txturls.classList.add("is-invalid");
-                const element = document.getElementById("err_msg");
-                element.innerHTML = `<li class='text-danger'>       Address ${arrayOfUrls[i]} is not valid.</li>`;
-                return 0;
-            }
+        checkUrlSyntax = (arrayOfUrls)=>{          
+            for(let i=0; i<arrayOfUrls.length; i++){
+                if (!isURL(arrayOfUrls[i].trim())) {
+                    console.log(arrayOfUrls[i]);
+                    const txturls = document.getElementById("urls");
+                    txturls.classList.add("is-invalid");
+                    const element = document.getElementById("err_msg");
+                    element.innerHTML = `<li class='text-danger'>       Address ${arrayOfUrls[i]} is not valid.</li>`;
+                    return 0;
+                }}
+            return 1;
         }
-        return 1;
-    }
-
+ 
     handelFormSubmit = (e) => {
         e.preventDefault();
 
@@ -52,10 +51,11 @@ class Links extends Component {
             alert("Please Enter URLS!");
             return;
         }
-
+        
         const arrayOfUrls = text.match(/[^\r\n]+/g);
         if (!arrayOfUrls) { return; }
-        if (this.checkUrlSyntax(arrayOfUrls) === 0) {
+        if (this.checkUrlSyntax(arrayOfUrls)===0)
+        {
             return;
         }
 
@@ -72,32 +72,32 @@ class Links extends Component {
                     AllOk = false;
                 }
             }
-            if (AllOk) {
+            if(AllOk){
                 console.log('all ok');
                 const element = document.getElementById("err_msg");
                 element.innerHTML = `<li class='text-success'> It seems all links look good.</li>`;
-                this.props.changelinksresult(true, arrayOfUrls);
-            } else {
+                this.props.changelinksresult(true,arrayOfUrls);
+            }else{
                 this.props.changelinksresult(false, []);
             }
         }
-        ).catch(e => {
-            console.log(e)
-            this.props.changelinksresult(false, []);
+        ).catch(e => { console.log(e)
+            this.props.changelinksresult(false,[]);
         });
     }
     render() {
-        const {handleUrlsChange}= this.props;
         return (
-            <div className="form-group">
-                <label htmlFor="urls">Urls</label>
-                <textarea name="urls" className="form-control" id="urls" rows="7"
-                    placeholder="Enter your URLs. (Enter every address in a separate line)"
-                    onChange={ handleUrlsChange} >
-                </textarea>
-                <small id="emailHelp" className="form-text text-muted">Enter the home page address of each website (e.g. http://www.example.com).</small>
-                <ul id='err_msg'>
-                </ul>
+            <div>
+                <form onSubmit={this.handelFormSubmit}>
+                    <label htmlFor="txtUrl">Links</label>
+                    <textarea name="urls" className="form-control" id="urls" rows="7" placeholder="Enter your URLs. (Enter every address in a seperate line)">
+                    </textarea>
+                    <small id="emailHelp" className="form-text text-muted">Enter the home page address of each website (e.g. http://www.example.com).</small>
+                    <ul id='err_msg'>
+                    </ul>
+                    <button type="submit" className="btn btn-info">Check Links</button>
+
+                </form>
             </div>
         );
     }
