@@ -198,9 +198,9 @@ class WebScraper extends Component {
       return;
     }
 
-    if (this.checkUrlSyntax(arrayOfUrls) === 0) {
-      return;
-    }
+    // if (this.checkUrlSyntax(arrayOfUrls) === 0) {
+    //   return;
+    // }
 
     this.setState(() => ({
       ScrapeUrls_enable: true,
