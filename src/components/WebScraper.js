@@ -125,14 +125,21 @@ class WebScraper extends Component {
   handelDownloadAllZip = () => {
     let zip = new JSZip();
     try {
+      let j=1;
       for (let i = 0; i < this.state.pages.length; i++) {
         const file_length = this.state.pages[i].text.split(" ").length;
         if (file_length >= this.state.MinWords) {
+          let filename = this.state.pages[i].url;
+          filename = filename.replace(/^https?:\/\//,'')
+          filename = filename.replace(/^www./,'')
+          filename = filename.replace(/\//g,'-')
+          
           zip.file(
-            encodeURIComponent(this.state.pages[i].url).substring(1, 100) +
-              ".txt",
+            encodeURIComponent(filename).substring(0, 100)+ "(" +j.toString()+
+              ").txt",
             this.state.pages[i].text
           );
+        j++;
         }
       }
     } catch (err) {
