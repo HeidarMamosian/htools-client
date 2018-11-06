@@ -3,6 +3,9 @@ import axios from "axios";
 import Sentences from "./Sentences";
 import { RingLoader } from "react-spinners";
 import {Redirect} from 'react-router-dom';
+import consts from "../../consts";
+
+
 class MakeSummary extends Component {
   state = {
     redirect:false,
@@ -22,7 +25,7 @@ class MakeSummary extends Component {
     
     console.log(fd);
     axios
-      .post("http://127.0.0.1:8000/api/lexrank/", fd, {
+      .post(consts.api + "/lexrank/", fd, {
         onUploadProgress: prg => {
           console.log("prog: " + Math.round((prg.loaded / prg.total) * 100));
         }
