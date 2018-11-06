@@ -7,7 +7,9 @@ function getRelativeAPI(host, port, path, https) {
 }
 
 const consts = {
-    api: process.env.NODE_ENV === "production" ? "/api" : getRelativeAPI(window.location.host, 8000, "/api"),
+    api:  getRelativeAPI(window.location.host, 8000, "/api"),
+
+    // api: process.env.NODE_ENV === "production" ? "/api" : getRelativeAPI(window.location.host, 8000, "/api"),
 };
 
 export default consts;

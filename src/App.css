@@ -1,0 +1,28 @@
+.src-text {
+    height: 50vh;
+    max-height: 50vh;
+    overflow: scroll;
+  }
+  .myfont {
+    font-family: "Peralta", cursive;
+  }
+  
+  
+  .textclass{
+    background-color : thistle;
+    overflow: auto;
+    max-width: 50%;
+    float:left; /* add this */
+    border: 1px solid rgb(101, 101, 177);
+    padding: 10px;
+  }
+  
+  .summaryclass{
+    background-color :white;
+    overflow: auto;
+    max-width: 50%;
+    float:left; /* add this */
+    border: 1px solid darkblue;
+    padding: 10px;
+  
+  }
