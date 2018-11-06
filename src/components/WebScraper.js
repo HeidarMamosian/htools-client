@@ -509,7 +509,7 @@ class WebScraper extends Component {
   render() {
     return (
       <div className="container">
-        <Header />
+        <Header title="Text Scraper"/>
 
         <div className="row form-group">
           <div className="col">

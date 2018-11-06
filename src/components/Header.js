@@ -7,7 +7,7 @@ class Header extends Component {
             <div>
                 <br />
                 <nav className="navbar navbar-light bg-light">
-                    <span className="navbar-brand mb-0 h1">Text Scrape</span>
+                    <span className="navbar-brand mb-0 h1">{this.props.title}</span>
                 </nav>
                 <br />
             </div>

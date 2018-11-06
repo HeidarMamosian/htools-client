@@ -29,7 +29,7 @@ class SummaryResult extends Component {
         </div>
 
         <div className="summaryclass">
-          <h6 className="myfont text-center"> Summary Text</h6>
+          <h6 className="myfont text-center">Text summary</h6>
 
           <div>
             <br />

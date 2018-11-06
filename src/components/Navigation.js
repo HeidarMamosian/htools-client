@@ -12,7 +12,7 @@ class Navigation extends React.Component {
           <ul className="navbar-nav">
             <li className="nav-item">
               <NavLink className="nav-link" to="/summary">
-                Summary
+                Summarizer
               </NavLink>
             </li>
             <li className="nav-item">
