@@ -10,7 +10,16 @@ class SummaryResult extends Component {
     this.setState({ selectedSentence: sent });
   };
   render() {
-    let mytext= this.props.location.state.text;
+    const mytext= this.props.location.state.text;
+    const concept= this.props.location.state.concept;
+
+    let keywords="";
+       
+    if(this.props.location.state.keywords)
+      {
+        keywords= this.props.location.state.keywords.join(',');
+       } 
+       
     // let indexstart=0
     // let indexend=mytext.length;
 
@@ -21,6 +30,20 @@ class SummaryResult extends Component {
     return (
       <div>
         <h3 className="myfont text-center">{this.props.location.state.title}</h3>
+        {keywords &&
+        <div className="keywordclass">
+          <span className="myfont text-center"> Keywords:</span>
+    
+          {keywords}
+          {/* <span style={{backgroundColor:"yellow"}}> {  mytext.substring(indexstart+1,indexend )} </span> */}
+        </div>}
+        { concept &&
+        <div className="keywordclass">
+          <span className="myfont text-center"> Concept:</span>
+    
+          {concept}
+          {/* <span style={{backgroundColor:"yellow"}}> {  mytext.substring(indexstart+1,indexend )} </span> */}
+        </div>}
         <div className="textclass">
           <h6 className="myfont text-center"> Original Text</h6>
     

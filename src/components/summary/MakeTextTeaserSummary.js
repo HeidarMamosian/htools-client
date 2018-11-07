@@ -5,11 +5,11 @@ import {Redirect} from 'react-router-dom';
 import consts from "../../consts";
 
 
-class MakeTextRankSummary extends Component {
+class MakeTextTeaserSummary extends Component {
   state = {
     redirect:false,
     Text: "",
-    Keywords : "",
+    concept : "",
     Sentences: [],
     OnProcess: false
   };
@@ -18,12 +18,12 @@ class MakeTextRankSummary extends Component {
     this.setState({ OnProcess: true });
     const fd = new FormData();
     fd.append("file", this.props.selectedFile, this.props.selectedFile.name);
-    fd.append("ratio", this.props.ratio);
+    fd.append("title", this.props.concept);
+    fd.append("stopwords", this.props.stopwords);
+    fd.append("sentencenumber", this.props.sentencenumber);
 
-    
-    console.log(fd);
     axios
-      .post(consts.api + "/textrank/", fd, {
+      .post(consts.api + "/textteaser/", fd, {
         onUploadProgress: prg => {
           console.log("prog: " + Math.round((prg.loaded / prg.total) * 100));
         }
@@ -51,7 +51,7 @@ class MakeTextRankSummary extends Component {
     
     return (
       <div>
-         {this.state.redirect ? <Redirect to= { {pathname:'/summaryresult' , state:{ sentences: this.state.Sentences, text:this.state.Text,keywords:this.state.Keywords, title:"Text Summarization Result (Text Rank)"}} } /> : ""}
+         {this.state.redirect ? <Redirect to= { {pathname:'/summaryresult' , state:{ sentences: this.state.Sentences, text:this.state.Text,concept:this.props.concept , title:"Text Summarization Result (Text Teaser)"}} } /> : ""}
         <button
           onClick={() => {
             this.fileUploadHandler();
@@ -72,4 +72,4 @@ class MakeTextRankSummary extends Component {
     );
   }
 }
-export default MakeTextRankSummary;
+export default MakeTextTeaserSummary;

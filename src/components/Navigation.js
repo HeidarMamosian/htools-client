@@ -21,6 +21,11 @@ class Navigation extends React.Component {
               </NavLink>
             </li>
             <li className="nav-item">
+              <NavLink className="nav-link" to="/textteasersummary">
+                TextTeaser-Summarizer
+              </NavLink>
+            </li>
+            <li className="nav-item">
               <NavLink className="nav-link" to="/scraper">
                 Scraper
               </NavLink>
