@@ -11,8 +11,13 @@ class Navigation extends React.Component {
           </NavLink>
           <ul className="navbar-nav">
             <li className="nav-item">
-              <NavLink className="nav-link" to="/summary">
-                Summarizer
+              <NavLink className="nav-link" to="/lexranksummary">
+                LexRank-Summarizer
+              </NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink className="nav-link" to="/textranksummary">
+                TextRank-Summarizer
               </NavLink>
             </li>
             <li className="nav-item">

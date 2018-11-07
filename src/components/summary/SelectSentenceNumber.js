@@ -12,6 +12,7 @@ class SelectSentenceNumber extends Component {
           value={defaultSentenceNumber}
           onChange={event => updateMethod(event.target.value)}
         />
+      <small className="text-muted d-block">The Max. number of sentences you need in summary.</small>
       </div>
     );
   }

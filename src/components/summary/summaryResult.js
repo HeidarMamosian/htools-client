@@ -11,16 +11,16 @@ class SummaryResult extends Component {
   };
   render() {
     let mytext= this.props.location.state.text;
-    let indexstart=0
-    let indexend=mytext.length;
+    // let indexstart=0
+    // let indexend=mytext.length;
 
     if(this.state.selectedSentence){
-         indexstart = mytext.indexOf(this.state.selectedSentence);
-        const indexend = indexstart + this.state.selectedSentence.length;
+        //  indexstart = mytext.indexOf(this.state.selectedSentence);
+        // const indexend = indexstart + this.state.selectedSentence.length;
     }
     return (
       <div>
-        <h3 className="myfont text-center"> Text Summarization Result</h3>
+        <h3 className="myfont text-center">{this.props.location.state.title}</h3>
         <div className="textclass">
           <h6 className="myfont text-center"> Original Text</h6>
     

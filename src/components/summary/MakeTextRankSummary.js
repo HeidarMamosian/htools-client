@@ -5,7 +5,7 @@ import {Redirect} from 'react-router-dom';
 import consts from "../../consts";
 
 
-class MakeSummary extends Component {
+class MakeTextRankSummary extends Component {
   state = {
     redirect:false,
     Text: "",
@@ -17,14 +17,12 @@ class MakeSummary extends Component {
     this.setState({ OnProcess: true });
     const fd = new FormData();
     fd.append("file", this.props.selectedFile, this.props.selectedFile.name);
-    fd.append("stopwords", this.props.stopwords);
-    fd.append("threshold", this.props.threshold);
-    fd.append("sentencenumber", this.props.sentencenumber);
+    fd.append("ratio", this.props.ratio);
 
     
     console.log(fd);
     axios
-      .post(consts.api + "/lexrank/", fd, {
+      .post(consts.api + "/textrank/", fd, {
         onUploadProgress: prg => {
           console.log("prog: " + Math.round((prg.loaded / prg.total) * 100));
         }
@@ -50,7 +48,7 @@ class MakeSummary extends Component {
     
     return (
       <div>
-         {this.state.redirect ? <Redirect to= { {pathname:'/summaryresult' , state:{ sentences: this.state.Sentences, text:this.state.Text, title:"Text Summarization Result (Lex Rank)"}} } /> : ""}
+         {this.state.redirect ? <Redirect to= { {pathname:'/summaryresult' , state:{ sentences: this.state.Sentences, text:this.state.Text, title:"Text Summarization Result (Text Rank)"}} } /> : ""}
         <button
           onClick={() => {
             this.fileUploadHandler();
@@ -71,4 +69,4 @@ class MakeSummary extends Component {
     );
   }
 }
-export default MakeSummary;
+export default MakeTextRankSummary;
